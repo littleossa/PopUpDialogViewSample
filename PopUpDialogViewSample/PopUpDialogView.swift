@@ -31,10 +31,8 @@ struct PopUpDialogView<Content: View>: View {
             let dialogWidth = proxy.size.width * 0.75
             
             ZStack {
-                // Background
-                Rectangle()
-                    .fill(.gray.opacity(0.7))
-                    .ignoresSafeArea()
+                
+                BackgroundView(color: .gray.opacity(0.7))
                     .onTapGesture {
                         if isEnabledToCloseByBackgroundTap {
                             withAnimation {
@@ -44,38 +42,24 @@ struct PopUpDialogView<Content: View>: View {
                     }
                 
                 content
-                .frame(width: dialogWidth)
-                .padding()
-                .padding(.top, 24)
-                .background(.white)
-                .cornerRadius(12)
-                .overlay(alignment: .topTrailing) {
-                    CloseButton {
-                        withAnimation {
-                            isPresented = false
+                    .frame(width: dialogWidth)
+                    .padding()
+                    .padding(.top, 24)
+                    .background(.white)
+                    .cornerRadius(12)
+                    .overlay(alignment: .topTrailing) {
+                        
+                        CloseButton(fontSize: 24,
+                                    weight: .bold,
+                                    color: .gray.opacity(0.7)) {
+                            withAnimation {
+                                isPresented = false
+                            }
                         }
+                        .padding(4)
                     }
-                }
             }
         }
-    }
-}
-
-struct CloseButton: View {
-    
-    let action: () -> Void
-    
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            Image(systemName: "xmark.circle")
-        }
-        .font(.system(size: 24,
-                      weight: .bold,
-                      design: .default))
-        .foregroundColor(.gray.opacity(0.7))
-        .padding(4)
     }
 }
 
@@ -83,10 +67,6 @@ struct PopUpDialogView_Previews: PreviewProvider {
     static var previews: some View {
         PopUpDialogView(isPresented: .constant(true)) {
             Text("Something")
-        }
-        
-        CloseButton {
-            print("")
         }
     }
 }
