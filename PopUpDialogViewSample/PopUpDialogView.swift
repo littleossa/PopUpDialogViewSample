@@ -22,8 +22,10 @@ extension PopUpDialogView {
 struct PopUpDialogView<Content: View>: View {
     
     @Binding var isPresented: Bool
-    private let content: Content
-    private let isEnabledToCloseByBackgroundTap: Bool
+    let content: Content
+    let isEnabledToCloseByBackgroundTap: Bool
+    
+    private let buttonSize: CGFloat = 24
     
     var body: some View {
         
@@ -44,12 +46,12 @@ struct PopUpDialogView<Content: View>: View {
                 content
                     .frame(width: dialogWidth)
                     .padding()
-                    .padding(.top, 24)
+                    .padding(.top, buttonSize)
                     .background(.white)
                     .cornerRadius(12)
                     .overlay(alignment: .topTrailing) {
                         
-                        CloseButton(fontSize: 24,
+                        CloseButton(fontSize: buttonSize,
                                     weight: .bold,
                                     color: .gray.opacity(0.7)) {
                             withAnimation {
