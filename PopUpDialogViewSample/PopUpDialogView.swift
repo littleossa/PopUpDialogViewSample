@@ -43,9 +43,7 @@ struct PopUpDialogView<Content: View>: View {
                         }
                     }
                 
-                ZStack {
-                    content
-                }
+                content
                 .frame(width: dialogWidth)
                 .padding()
                 .padding(.top, 24)
