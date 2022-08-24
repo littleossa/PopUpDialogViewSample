@@ -7,43 +7,6 @@
 
 import SwiftUI
 
-struct PopUpDialogView<Content: View>: View {
-    
-    @Binding var isPresented: Bool
-    private let content: Content
-    private let isEnabledToCloseByBackgroundTap: Bool
-    
-    var body: some View {
-        
-        GeometryReader { proxy in
-            let dialogWidth = proxy.size.width * 0.75
-            
-            ZStack {
-                backgroundView
-                    .onTapGesture {
-                        if isEnabledToCloseByBackgroundTap {
-                            isPresented = false
-                        }
-                    }
-                
-                ZStack {
-                    ZStack {
-                        content
-                    }
-                    .padding(.top, 24)
-                }
-                .frame(width: dialogWidth)
-                .padding()
-                .background(.white)
-                .cornerRadius(12)
-                .overlay(alignment: .topTrailing) {
-                    closeButton
-                }
-            }
-        }
-    }
-}
-
 // MARK: - initializer
 extension PopUpDialogView {
     
@@ -56,18 +19,53 @@ extension PopUpDialogView {
     }
 }
 
-// MARK: - Views
-extension PopUpDialogView {
+struct PopUpDialogView<Content: View>: View {
     
-    private var backgroundView: some View {
-        Rectangle()
-            .fill(.gray.opacity(0.7))
-            .ignoresSafeArea()
+    @Binding var isPresented: Bool
+    private let content: Content
+    private let isEnabledToCloseByBackgroundTap: Bool
+    
+    var body: some View {
+        
+        GeometryReader { proxy in
+            let dialogWidth = proxy.size.width * 0.75
+            
+            ZStack {
+                // Background
+                Rectangle()
+                    .fill(.gray.opacity(0.7))
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        if isEnabledToCloseByBackgroundTap {
+                            isPresented = false
+                        }
+                    }
+                
+                ZStack {
+                    content
+                }
+                .frame(width: dialogWidth)
+                .padding()
+                .padding(.top, 24)
+                .background(.white)
+                .cornerRadius(12)
+                .overlay(alignment: .topTrailing) {
+                    CloseButton {
+                        isPresented = false
+                    }
+                }
+            }
+        }
     }
+}
+
+struct CloseButton: View {
     
-    private var closeButton: some View {
+    let action: () -> Void
+    
+    var body: some View {
         Button {
-            isPresented = false
+            action()
         } label: {
             Image(systemName: "xmark.circle")
         }
@@ -83,6 +81,10 @@ struct PopUpDialogView_Previews: PreviewProvider {
     static var previews: some View {
         PopUpDialogView(isPresented: .constant(true)) {
             Text("Something")
+        }
+        
+        CloseButton {
+            print("")
         }
     }
 }
