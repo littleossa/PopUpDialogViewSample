@@ -21,29 +21,36 @@ struct ContentView: View {
             
             if shouldPresentPopUpDialog {
                 PopUpDialogView(isPresented: $shouldPresentPopUpDialog) {
-                    face
+                    Face()
                 }
             }
         }
     }
+}
+
+// MARK: - Face
+struct Face: View {
     
-    private var face: some View {
-            VStack {
-                HStack {
-                    eyeWithEyebrow
-                    eyeWithEyebrow
-                }
-                Image(systemName: "nose")
-                Spacer()
-                    .frame(height: 5)
-                Image(systemName: "mouth")
-                    .font(.system(size: 24,
-                                  weight: .regular,
-                                  design: .default))
+    var body: some View {
+        VStack {
+            HStack {
+                EyeWithEyebrow()
+                EyeWithEyebrow()
             }
+            Image(systemName: "nose")
+            Spacer()
+                .frame(height: 5)
+            Image(systemName: "mouth")
+                .font(.system(size: 24,
+                              weight: .regular,
+                              design: .default))
+        }
     }
+}
+
+struct EyeWithEyebrow: View {
     
-    private var eyeWithEyebrow: some View {
+    var body: some View {
         VStack {
             Image(systemName: "chevron.compact.up")
                 .font(.system(size: 24,
@@ -54,8 +61,11 @@ struct ContentView: View {
     }
 }
 
+// MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        Face()
+        EyeWithEyebrow()
     }
 }
