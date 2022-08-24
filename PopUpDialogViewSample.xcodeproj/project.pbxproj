@@ -11,6 +11,7 @@
 		97CD462528B5A6E800919B65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD462428B5A6E800919B65 /* ContentView.swift */; };
 		97CD462728B5A6E900919B65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CD462628B5A6E900919B65 /* Assets.xcassets */; };
 		97CD462A28B5A6E900919B65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CD462928B5A6E900919B65 /* Preview Assets.xcassets */; };
+		97CD463128B5A70900919B65 /* PopUpDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD463028B5A70900919B65 /* PopUpDialogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		97CD462428B5A6E800919B65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		97CD462628B5A6E900919B65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97CD462928B5A6E900919B65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		97CD463028B5A70900919B65 /* PopUpDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpDialogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				97CD462228B5A6E800919B65 /* PopUpDialogViewSampleApp.swift */,
 				97CD462428B5A6E800919B65 /* ContentView.swift */,
+				97CD463028B5A70900919B65 /* PopUpDialogView.swift */,
 				97CD462628B5A6E900919B65 /* Assets.xcassets */,
 				97CD462828B5A6E900919B65 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97CD462528B5A6E800919B65 /* ContentView.swift in Sources */,
+				97CD463128B5A70900919B65 /* PopUpDialogView.swift in Sources */,
 				97CD462328B5A6E800919B65 /* PopUpDialogViewSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
