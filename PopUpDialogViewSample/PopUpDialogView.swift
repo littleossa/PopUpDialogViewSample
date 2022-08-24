@@ -37,7 +37,9 @@ struct PopUpDialogView<Content: View>: View {
                     .ignoresSafeArea()
                     .onTapGesture {
                         if isEnabledToCloseByBackgroundTap {
-                            isPresented = false
+                            withAnimation {
+                                isPresented = false
+                            }
                         }
                     }
                 
@@ -51,7 +53,9 @@ struct PopUpDialogView<Content: View>: View {
                 .cornerRadius(12)
                 .overlay(alignment: .topTrailing) {
                     CloseButton {
-                        isPresented = false
+                        withAnimation {
+                            isPresented = false
+                        }
                     }
                 }
             }

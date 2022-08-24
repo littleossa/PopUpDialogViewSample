@@ -14,7 +14,9 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Button {
-                shouldPresentPopUpDialog = true
+                withAnimation {
+                    shouldPresentPopUpDialog = true
+                }
             } label: {
                 Text("Present Pop-up Dialog")
             }
